@@ -3,23 +3,29 @@ class Burger():
     def __init__(self, amount):
         self.price = 10
         self.amount = amount
+        self.name = 'Burger'
 
 class Drink():
     def __init__(self, amount):
         self.small_price = 3
         self.large_price = 5
         self.amount = amount
+        self.small_name = 'Small drink'
+        self.large_name = 'Large drink'
 
 class Side():
     def __init__(self, amount):
         self.fries_price = 5
         self.onion_price = 7
         self.amount = amount
+        self.fries_name = 'French fries'
+        self.onion_name = 'Onion rings'
     
 class Combo():
     def __init__(self, amount):
         self.price = 22
         self.amount = amount
+        self.name = 'Combo'
     
 class Order:
     def __init__(self, name):
@@ -52,17 +58,17 @@ def take_order():
             if choice == 'burger':
                 b = Burger(amount)
                 order.total_price += b.price * b.amount
-                order.order_items.append(f'Burger x {b.amount}, price: {b.price}$')
+                order.order_items.append(f'{b.name} x {b.amount}, price: {b.price}$')
 
             elif choice == 'drink':
                 d = Drink(amount)
                 size = input('Would you like small or large? small/large ')
                 if size == 'small':
                     order.total_price += d.small_price * d.amount
-                    order.order_items.append(f'Small drinks x {d.amount}, price: {d.small_price}$')
+                    order.order_items.append(f'{d.small_name} x {d.amount}, price: {d.small_price}$')
                 elif size == 'large':
                     order.total_price += d.large_price * d.amount
-                    order.order_items.append(f'Large drinks x {d.amount}, price: {d.large_price}$')
+                    order.order_items.append(f'{d.large_name} x {d.amount}, price: {d.large_price}$')
                 else:
                     print('Please input a valid choice.')
 
@@ -71,17 +77,17 @@ def take_order():
                 selection = input('Would you like onion rings or french fries? onion/fries ')
                 if selection == 'onion':
                     order.total_price += s.onion_price * s.amount
-                    order.order_items.append(f'Onion rings x {s.amount}, price: {s.onion_price}$')
+                    order.order_items.append(f'{s.onion_name} x {s.amount}, price: {s.onion_price}$')
                 elif selection == 'fries':
                     order.total_price += s.fries_price * s.amount
-                    order.order_items.append(f'French fries x {s.amount}, price: {s.fries_price}$')
+                    order.order_items.append(f'{s.fries_name} x {s.amount}, price: {s.fries_price}$')
                 else:
                     print('Please input a valid choice.')
 
             elif choice == 'combo':
                 c = Combo(amount)
                 order.total_price += c.price * c.amount
-                order.order_items.append(f'Side dish x {c.amount}, price: {c.price}$')
+                order.order_items.append(f'{c.name} x {c.amount}, price: {c.price}$')
 
             else:
                 print('Please input a valid choice.')
